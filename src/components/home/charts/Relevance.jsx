@@ -18,7 +18,9 @@ import {
     PointElement,
     LineElement
   } from "chart.js";
+import { useState } from "react";
   import { Line } from "react-chartjs-2";
+import TotalNewsDropdown from "../TotalNewsDropdown";
   
   ChartJs.register({
     CategoryScale,
@@ -33,18 +35,19 @@ import {
   
   export const Relevance = ({ v_data }) => {
     const theme = useTheme();
+    const [totalNews, setTotalNews] = useState(25);
     const data = {
       datasets: [
         {
           label: "Likelihood",
-          data: v_data?.slice(0,30).map((item) => item?.relevance),
+          data: v_data?.reverse().slice(0,totalNews).map((item) => item?.relevance ? item.relevance : 0),
           backgroundColor: "rgba(238, 130, 238, 0.2)",
           borderColor: "rgb(238, 130, 238)",
-          tension: 0.4,
+          tension: 0.3,
           fill: true,
         },
       ],
-      labels: v_data?.slice(0,30).map((item) => item?.end_year ? item?.end_year : "N/A"),
+      labels: v_data?.slice(0,totalNews).map((item) => item?.end_year ? item?.end_year : "N/A"),
     };
     const options = {
       animation: true,
@@ -104,9 +107,7 @@ import {
       <Card>
         <CardHeader
           action={
-            <Button color="primary" size="small">
-              Last 30 News
-            </Button>
+            <TotalNewsDropdown totalNews={totalNews} setTotalNews={setTotalNews} data={[25, 50, 100, 200, 500]} />
           }
           title={"Relevance Analysis"}
         />

@@ -38,7 +38,7 @@ ChartJs.register({
 
 export const Intensity = ({ v_data }) => {
   const theme = useTheme();
-  const [totalNews, setTotalNews] = React.useState('100');
+  const [totalNews, setTotalNews] = React.useState(25);
 
   const data = {
     datasets: [
@@ -50,7 +50,7 @@ export const Intensity = ({ v_data }) => {
           .map((item) => (item?.intensity ? item?.intensity : 0)),
         backgroundColor: "rgba(175, 192, 12, 0.2)",
         borderColor: "rgb(175, 192, 12)",
-        tension: 0.4,
+        borderWidth: 1,
         fill: true,
       },
     ],
@@ -117,7 +117,7 @@ export const Intensity = ({ v_data }) => {
     <Card>
       <CardHeader
         action={
-          <TotalNewsDropdown totalNews={totalNews} setTotalNews={setTotalNews} />
+          <TotalNewsDropdown totalNews={totalNews} setTotalNews={setTotalNews} data={[25, 50, 100, 200, 500, 1000]} />
         }
         title={"Intensity Analysis"}
       />

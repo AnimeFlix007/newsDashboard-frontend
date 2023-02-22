@@ -4,26 +4,22 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function TotalNewsDropdown({ totalNews, setTotalNews }) {
+export default function TotalNewsDropdown({ totalNews, setTotalNews, data }) {
   const handleChange = (event) => {
     setTotalNews(event.target.value);
   };
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Total</InputLabel>
+      <InputLabel id="demo-simple-select-label">Last</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={totalNews}
-        label="Total"
+        label="Last"
         onChange={handleChange}
         size="small"
       >
-        <MenuItem value={10}>10 News</MenuItem>
-        <MenuItem value={50}>50 News</MenuItem>
-        <MenuItem value={100}>100 News</MenuItem>
-        <MenuItem value={200}>200 News</MenuItem>
-        <MenuItem value={500}>500 News</MenuItem>
+        {data.map(item => <MenuItem value={item}>{item} News</MenuItem>)}
       </Select>
     </FormControl>
   );

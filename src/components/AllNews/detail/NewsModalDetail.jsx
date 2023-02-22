@@ -3,22 +3,23 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Grid } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 700,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 2,
-  borderRadius: 1,
-};
 
 export default function NewsModalDetail({ news, open, setOpen }) {
   const handleClose = () => setOpen(false);
+  const mediaQuery = useMediaQuery("(max-width:750px)");
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: mediaQuery ? "90vw" : 700,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 2,
+    borderRadius: 1,
+  };
   return (
     <Modal
       open={open}

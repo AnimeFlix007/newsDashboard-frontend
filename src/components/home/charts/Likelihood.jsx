@@ -19,6 +19,8 @@ import {
     LineElement
   } from "chart.js";
   import { Line } from "react-chartjs-2";
+import TotalNewsDropdown from "../TotalNewsDropdown";
+import { useState } from "react";
   
   ChartJs.register({
     CategoryScale,
@@ -33,18 +35,19 @@ import {
   
   export const Likelihood = ({ v_data }) => {
     const theme = useTheme();
+    const [totalNews, setTotalNews] = useState(25);
     const data = {
       datasets: [
         {
           label: "Likelihood",
-          data: v_data?.slice(0,30).map((item) => item?.likelihood),
+          data: v_data?.reverse()?.slice(0,totalNews).map((item) => item?.likelihood ? item?.likelihood : 0),
           backgroundColor: "rgba(255, 0, 0, 0.2)",
           borderColor: "rgb(255, 0, 0)",
-          tension: 0.4,
+          tension: 0.2,
           fill: true,
         },
       ],
-      labels: v_data?.slice(0,30).map((item) => item?.end_year ? item?.end_year : "N/A"),
+      labels: v_data?.reverse()?.slice(0,totalNews).map((item) => item?.end_year ? item?.end_year : "N/A"),
     };
     const options = {
       animation: true,
@@ -104,9 +107,7 @@ import {
       <Card>
         <CardHeader
           action={
-            <Button color="primary" size="small">
-              Last 30 News
-            </Button>
+            <TotalNewsDropdown totalNews={totalNews} setTotalNews={setTotalNews} data={[25, 50, 100, 200]} />
           }
           title={"Likelihood Analysis"}
         />

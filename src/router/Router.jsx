@@ -11,12 +11,15 @@ const Router = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
+    console.log("1")
     fetchData(`${BaseURL}api/dummy-data`)
       .then((res) => {
+        console.log("2")
         setData(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
+        console.log("3")
         console.log(err);
         setLoading(false);
       });

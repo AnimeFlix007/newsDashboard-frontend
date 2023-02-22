@@ -202,7 +202,7 @@ export default function AllNews({data, loading}) {
                 justifyContent: "center",
               }}
             >
-              <img style={{ width: "600px" }} src={NotFound} alt="NoData" />
+              <img style={{ width: "30vw" }} src={NotFound} alt="NoData" />
             </div>
           )}
           {filteredData.length > 0 && (

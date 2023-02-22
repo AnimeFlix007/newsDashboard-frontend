@@ -6,6 +6,8 @@ import { Topics } from './charts/Topics'
 import { Relevance } from './charts/Relevance'
 import TopLatestNews from './news/TopLatestNews'
 import SectorsLikelihood from './charts/SectorsLikelihood'
+import { Region } from './charts/Region'
+import { Countries } from './charts/Countries'
 
 const DataVisualizationNews = ({data}) => {
   return (
@@ -25,11 +27,17 @@ const DataVisualizationNews = ({data}) => {
       <Grid item lg={4} xl={3} sm={6} xs={12}>
         <Topics v_data={data} />
       </Grid>
-      <Grid item lg={6} sm={6} xl={3} xs={12}>
+      <Grid item lg={5} xl={3} sm={6} xs={12}>
+        <Region v_data={data} />
+      </Grid>
+      <Grid item lg={7} xl={3} sm={6} xs={12}>
+        <Likelihood v_data={data} />
+      </Grid>
+      <Grid item lg={8} sm={6} xl={3} xs={12}>
         <Relevance v_data={data} />
       </Grid>
-      <Grid item lg={6} xl={3} sm={6} xs={12}>
-        <Likelihood v_data={data} />
+      <Grid item lg={4} sm={6} xl={3} xs={12}>
+        <Countries v_data={data} />
       </Grid>
       <Grid item lg={5} sm={6} xl={3} xs={12}>
         <SectorsLikelihood v_data={data} />

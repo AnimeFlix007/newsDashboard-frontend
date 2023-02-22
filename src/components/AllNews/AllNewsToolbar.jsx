@@ -4,7 +4,7 @@ import CallMissedOutgoingIcon from "@mui/icons-material/CallMissedOutgoing";
 import CountriesDropdown from "./filter/CountriesDropdown";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
 import SectorDropdown from "./filter/SectorDropdown";
 import TopicDropdown from "./filter/TopicDropdown";
@@ -32,6 +32,7 @@ const AllNewsToolbar = ({
   search,
   setSearch,
 }) => {
+  const mediaQuery = useMediaQuery("(max-width:550px)");
   function resetFilterHandler() {
     setCountry("");
     setTopic("");
@@ -79,22 +80,31 @@ const AllNewsToolbar = ({
         </Typography>
       </Box>
       <Box
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-          width: "100%",
-          gridGap: ".5rem"
-        }}
+        style={
+          mediaQuery
+            ? {
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+                width: "100%",
+                gridGap: ".5rem",
+              }
+            : {
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                width: "100%",
+                gridGap: ".5rem",
+              }
+        }
       >
-          <TextField
-            label="Search"
-            id="outlined-size-small"
-            size="small"
-            value={search}
-            sx={{ m: 1 }}
-            onChange={(e) => setSearch(e.target.value)}
-            fullWidth
-          />
+        <TextField
+          label="Search"
+          id="outlined-size-small"
+          size="small"
+          value={search}
+          sx={{ m: 1 }}
+          onChange={(e) => setSearch(e.target.value)}
+          fullWidth
+        />
         <CountriesDropdown
           v_data={v_data}
           country={country}

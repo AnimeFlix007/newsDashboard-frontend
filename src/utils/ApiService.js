@@ -1,1 +1,2 @@
-export const BaseURL = "http://localhost:5000/"
+export const BaseURL = "https://cute-puce-snapper.cyclic.app/"
+// https://cute-puce-snapper.cyclic.app/

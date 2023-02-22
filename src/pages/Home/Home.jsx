@@ -5,7 +5,6 @@ import DataVisualizationNews from "../../components/home/DataVisualizationNews";
 import Loader from "../../components/shared/Loader";
 
 const Home = ({data, loading}) => {
-
   return (
     <Box
       component="main"
