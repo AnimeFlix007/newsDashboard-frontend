@@ -121,13 +121,22 @@ const AllNewsToolbar = ({
         <SourceDropdown v_data={v_data} source={source} setSource={setSource} />
         <RegionDropdown v_data={v_data} region={region} setRegion={setRegion} />
         <Box
-          style={{
-            display: "flex",
-            alignItems: "center",
-            // width: "100%",
-            flexDirection: "row",
-            // justifyContent: "center",
-          }}
+          style={
+            mediaQuery
+              ? {
+                  width: "90vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }
+              : {
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
+                  flex: 1,
+                  justifyContent: "center",
+                }
+          }
         >
           <Tooltip title="Reset" arrow>
             <Button
